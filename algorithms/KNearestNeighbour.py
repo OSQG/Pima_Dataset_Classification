@@ -1,2 +1,2 @@
-def KNN():
+def KNN(k, testing, training):
     return
