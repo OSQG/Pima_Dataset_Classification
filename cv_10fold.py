@@ -90,7 +90,7 @@ def write_output_file(folds):
             count += 1
             outfile.write('fold{}\n'.format(count))
             for instance in folds[fold]:
-                instance = str(instance).replace("[", "").replace("]", "").replace("'", "") + "\n"
+                instance = str(instance).replace("[", "").replace("]", "").replace("'", "").replace(" ", "") + "\n"
                 outfile.write(instance)
             if count < 10:
                 outfile.write('\n')
@@ -99,5 +99,5 @@ if __name__ == "__main__":
     data_file = sys.argv[1]
     yes_instances, no_instances = read_Data(data_file)
     stratified_folds = create_stratified_folds(yes_instances, no_instances)
-    write_output_file(stratified_folds)
+    #write_output_file(stratified_folds)
     ten_fold_cv(stratified_folds)
