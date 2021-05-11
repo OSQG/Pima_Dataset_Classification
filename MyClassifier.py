@@ -1,5 +1,4 @@
 import sys
-import numpy
 from algorithms.KNearestNeighbour import KNN
 from algorithms.NaiveBayes import NaiveBayes
 
@@ -23,6 +22,7 @@ if __name__ == "__main__":
         return data
 
     if classifier == "NB":
-        NaiveBayes(None, None)
+        #NaiveBayes(None, None)
+        None
     elif classifier[-2:] == "NN":
         KNN(int(classifier[:-2]), read_Data(testing_filename), read_Data(training_filename))

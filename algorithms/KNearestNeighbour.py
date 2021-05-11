@@ -3,7 +3,7 @@ from math import sqrt
 # Calculate the Euclidean distance between two vectors
 def euclidean_distance(vector1, vector2):
 	distance = 0.0
-	for i in range(len(vector1)-1):
+	for i in range(len(vector1)):
 		distance += (vector1[i] - vector2[i])**2
 	return sqrt(distance)
 
