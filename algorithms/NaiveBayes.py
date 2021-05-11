@@ -109,7 +109,7 @@ def NaiveBayes(testing, training):
             # print(test_p_yes)
             # print(test_p_no)
             ratio = test_p_yes/test_p_no
-            print(ratio)
+            #print(ratio)
             if ratio>1:
                 print("yes")
             else:
