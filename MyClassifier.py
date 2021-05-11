@@ -22,8 +22,9 @@ if __name__ == "__main__":
         return data
 
     if classifier == "NB":
-        #NaiveBayes(None, None)
-        None
+        result = NaiveBayes(read_Data(testing_filename), read_Data(training_filename))
+        for i in result:
+            print(i)
     elif classifier[-2:] == "NN":
         result = KNN(int(classifier[:-2]), read_Data(testing_filename), read_Data(training_filename))
         for i in result:
