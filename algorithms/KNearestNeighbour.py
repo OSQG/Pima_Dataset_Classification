@@ -38,6 +38,6 @@ def KNN(k, testing, training):
             predictions.append("no")
         else:
             predictions.append("yes")
-    for i in predictions:
-        print(i)
+    # for i in predictions:
+    #     print(i)
     return predictions
