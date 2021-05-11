@@ -41,18 +41,21 @@ def NaiveBayes(testing, training):
     no=[]
     att_yes=[]
     att_no=[]
-
+    for i in range(0,8):
+        att_no.append([])
+        att_yes.append([])
     # data in training is looks like this [[0.22, 0.11, ... , "yes"] , ... , [0.23, 0.2, ..., "no"]] 
     for row in training:
         # If the last attribute for each row is yes then append the yes row to yes and the attributes only to att_yes
         if row[-1] == "yes":
             yes.append(row[-1])
-            # Takes everything expect last attribute which is the class yes or no
-            att_yes.append(row[:-1])
+            for j in range(0,8):
+                att_yes[j].append((row[j]))
         # Same but for no
         elif row[-1] == "no":
             no.append(row[-1])
-            att_no.append(row[:-1])
+            for j in range(0,8):
+                att_no[j].append((row[j]))
     
     p_yes=len(yes)/(len(yes)+len(no))
     p_no=len(no)/(len(yes)+len(no))
@@ -61,8 +64,8 @@ def NaiveBayes(testing, training):
     for row in testing:
         y=[]
         n=[]
-        for i in range(len(row)): #each attribute
-            if i < len(att_yes):
+        for i in range(0, len(row)): #each attribute
+            if i <= len(att_yes):
                 first = 1/(stdev(att_yes[i])*(2*math.pi)**1/2)
                 power_numerator = (float(row[i])-average(att_yes[i]))**2
                 power_denominator = 2 * (stdev(att_yes[i]))**2
@@ -70,14 +73,17 @@ def NaiveBayes(testing, training):
                 probability = first*math.e**power
                 y.append(probability)
             
-            if i < len(att_no):          
+            if i <= len(att_no):          
                 first = 1/(stdev(att_no[i])*(2*math.pi)**1/2)
                 power_numerator = (float(row[i])-average(att_no[i]))**2
                 power_denominator = 2 * (stdev(att_no[i]))**2
                 power = -power_numerator/power_denominator
                 probability = first*math.e**power
                 n.append(probability)
-
+        # print(y)
+        # print(n)
+        # print(" ")
+        # return
         # Now that all the probabilities have been calculated for the different attributes in this row,
         test_p_yes = p_yes
         test_p_no = p_no
