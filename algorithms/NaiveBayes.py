@@ -41,7 +41,7 @@ def NaiveBayes(testing, training):
     no=[]
     att_yes=[]
     att_no=[]
-    for i in range(0,8):
+    for i in range(len(training[0])-1):
         att_no.append([])
         att_yes.append([])
     # data in training is looks like this [[0.22, 0.11, ... , "yes"] , ... , [0.23, 0.2, ..., "no"]] 
@@ -50,12 +50,12 @@ def NaiveBayes(testing, training):
         # If the last attribute for each row is yes then append the yes row to yes and the attributes only to att_yes
         if row[-1] == "yes":
             yes.append(row[-1])
-            for j in range(0,8):
+            for j in range(len(training[0])-1):
                 att_yes[j].append((row[j]))
         # Same but for no
         elif row[-1] == "no":
             no.append(row[-1])
-            for j in range(0,8):
+            for j in range(len(training[0])-1):
                 att_no[j].append((row[j]))
     p_yes=len(yes)/(len(yes)+len(no))
     p_no=len(no)/(len(yes)+len(no))
