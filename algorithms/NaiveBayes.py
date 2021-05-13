@@ -46,6 +46,7 @@ def NaiveBayes(testing, training):
         att_yes.append([])
     # data in training is looks like this [[0.22, 0.11, ... , "yes"] , ... , [0.23, 0.2, ..., "no"]] 
     for row in training:
+        # print(row[-1])
         # If the last attribute for each row is yes then append the yes row to yes and the attributes only to att_yes
         if row[-1] == "yes":
             yes.append(row[-1])
@@ -56,7 +57,6 @@ def NaiveBayes(testing, training):
             no.append(row[-1])
             for j in range(0,8):
                 att_no[j].append((row[j]))
-    
     p_yes=len(yes)/(len(yes)+len(no))
     p_no=len(no)/(len(yes)+len(no))
 
@@ -69,17 +69,18 @@ def NaiveBayes(testing, training):
                 first = 1/(stdev(att_yes[i])*(2*math.pi)**1/2)
                 power_numerator = (float(row[i])-average(att_yes[i]))**2
                 power_denominator = 2 * (stdev(att_yes[i]))**2
-                power = -power_numerator/power_denominator
-                probability = first*math.e**power
-                y.append(probability)
-            
+                if power_denominator != 0:
+                    power = -power_numerator/power_denominator
+                    probability = first*math.e**power
+                    y.append(probability)
             if i <= len(att_no):          
                 first = 1/(stdev(att_no[i])*(2*math.pi)**1/2)
                 power_numerator = (float(row[i])-average(att_no[i]))**2
                 power_denominator = 2 * (stdev(att_no[i]))**2
-                power = -power_numerator/power_denominator
-                probability = first*math.e**power
-                n.append(probability)
+                if power_denominator != 0:
+                    power = -power_numerator/power_denominator
+                    probability = first*math.e**power
+                    n.append(probability)
         # print(y)
         # print(n)
         # print(" ")
