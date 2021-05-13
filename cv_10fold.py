@@ -84,15 +84,18 @@ def ten_fold_cv(folds):
         nb_accuracy.append(nb_score/len(validation_instances))
         one_nn_accuracy.append(one_nn_score/len(validation_instances))
         five_nn_accuracy.append(five_nn_score / len(validation_instances))
-        print('Round {} accuracy for Naive Bayes: {}'.format(i+1, nb_accuracy[i]))
         print('Round {} accuracy for 1-Nearest Neighbours: {}'.format(i + 1, one_nn_accuracy[i]))
         print('Round {} accuracy for 5-Nearest Neighbours: {}'.format(i + 1, five_nn_accuracy[i]))
+        print('Round {} accuracy for Naive Bayes: {}'.format(i+1, nb_accuracy[i]))
+
     nb_average_acc = numpy.mean(nb_accuracy)
     one_nn_average_acc = numpy.mean(one_nn_accuracy)
     five_nn_average_acc = numpy.mean(five_nn_accuracy)
-    print('Average accuracy for Naive Bayes: {}%'.format(nb_average_acc))
+    print(" ")
     print('Average accuracy for 1-Nearest Neighbours: {}%'.format(one_nn_average_acc))
     print('Average accuracy for 5-Nearest Neighbours: {}%'.format(five_nn_average_acc))
+    print('Average accuracy for Naive Bayes: {}%'.format(nb_average_acc))
+
 
 
 def write_output_file(folds):
