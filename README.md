@@ -4,7 +4,7 @@
 
 Aims:mag_right:
 -----
-- Implement  the  K-Nearest  Neighbour  and  Naïve  Bayes  algorithms  and  evaluate them on the pima dataset using the stratified cross validation method. 
+- Implementing  the  K-Nearest  Neighbour  and  Naïve  Bayes  algorithms  and  evaluating them on the pima dataset using the stratified cross validation method. 
 
 - Evaluating the performance of  other  classifiers  on  the  same  dataset  using  Weka. 
 
@@ -19,5 +19,5 @@ To run the program:
 
 - The `training.csv` and `testing.csv` can be replaced with any datasets that you provide.
 
-To run an example of KNN using the Pima and Testing sets provided:
+To run an example using the Pima and Testing sets provided:
 `python MyClassifier.py pima.csv testing.csv 5NN`
